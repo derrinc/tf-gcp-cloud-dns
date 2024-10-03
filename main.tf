@@ -1,9 +1,9 @@
 # modules/cloud_dns/main.tf
 
 resource "google_dns_managed_zone" "managed_zone" {
-  name     = var.zone_name
-  dns_name = var.zone_dns_name
-  visibility = var.zone_visibility
+  name        = var.zone_name
+  dns_name    = var.zone_dns_name
+  visibility  = var.zone_visibility
 
   # Only required for private zones
   dynamic "networks" {

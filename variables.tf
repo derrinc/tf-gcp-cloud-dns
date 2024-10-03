@@ -7,13 +7,13 @@ variable "zone_name" {
 
 variable "zone_dns_name" {
   type        = string
-  description = "The DNS name of the managed zone, e.g., 'example.com.'. Must end with a dot."
+  description = "The DNS name of the managed zone, e.g., 'example.internal.'. Must end with a dot."
 }
 
 variable "zone_visibility" {
   type        = string
   description = "The visibility of the DNS managed zone. Options: 'public', 'private'."
-  default     = "public"
+  default     = "private"
 }
 
 variable "networks" {
@@ -30,7 +30,7 @@ variable "zone_description" {
 
 variable "cname_records" {
   type        = map(string)
-  description = "A map of subdomain to target hostname for CNAME records. Example: { 'dev' = 'dev-service.region.r.appspot.com.' }"
+  description = "A map of subdomain to target hostname for CNAME records. Example: { 'dev' = 'nginx-hello-world-px3dwr6caa-uw.a.run.app.' }"
   default     = {}
 }
 
