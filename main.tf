@@ -2,7 +2,7 @@
 
 resource "google_dns_managed_zone" "managed_zone" {
   name        = var.zone_name
-  dns_name    = var.zone_dns_name
+  dns_name    = "${var.zone_dns_name}."
   visibility  = var.zone_visibility
 
   # Conditionally include networks block for private zones only
