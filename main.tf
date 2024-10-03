@@ -5,11 +5,13 @@ resource "google_dns_managed_zone" "managed_zone" {
   dns_name    = var.zone_dns_name
   visibility  = var.zone_visibility
 
-  # Only required for private zones
-  dynamic "networks" {
-    for_each = var.zone_visibility == "private" ? var.networks : []
+  # Conditionally include networks block for private zones only
+  dynamic "private_visibility_config" {
+    for_each = var.zone_visibility == "private" ? [1] : []
     content {
-      network_url = networks.value
+      networks {
+        network_url = var.networks[0]
+      }
     }
   }
 
